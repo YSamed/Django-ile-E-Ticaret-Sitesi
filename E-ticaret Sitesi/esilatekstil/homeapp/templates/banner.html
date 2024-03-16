@@ -1,0 +1,111 @@
+{% load static %}
+
+<!-- ***** Main Banner Area Start ***** -->
+<div class="main-banner" id="top">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="left-content">
+                    <div class="thumb">
+                        <div class="inner-content">
+                            <h4>Esila Tekstil</h4>
+                            <span>Hep En İyisi Hep Yenisi</span>
+                            <div class="main-border-button">
+                                <a href="{% url 'products' %}">Şimdi Satın Al</a>
+                            </div>
+                        </div>
+                        <img src="{% static 'assets/images/left-banner-image.jpg' %}" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="right-content">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="right-first-image">
+                                <div class="thumb">
+                                    <div class="inner-content">
+                                        <h4>Kadın</h4>
+                                        <span>Tarzınızı Yansıtacak En Güzel Ürünler</span>
+                                    </div>
+                                    <div class="hover-content">
+                                        <div class="inner">
+                                            <h4>Kadın</h4>
+                                            <p>Tarzınızı Yansıtacak En Güzel Ürünler</p>
+                                            <div class="main-border-button">
+                                                <a href="{% url 'category_products' id=21 slug='kadin' %}">Daha Fazla</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <img src="{% static 'assets/images/baner-right-image-01.jpg' %}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="right-first-image">
+                                <div class="thumb">
+                                    <div class="inner-content">
+                                        <h4>Erkek</h4>
+                                        <span>Tarzınızı Yansıtacak En Güzel Ürünler</span>
+                                    </div>
+                                    <div class="hover-content">
+                                        <div class="inner">
+                                            <h4>Erkek</h4>
+                                            <p>Tarzınızı Yansıtacak En Güzel Ürünler</p>
+                                            <div class="main-border-button">
+                                                <a href="{% url 'category_products' id=18 slug='erkek' %}">Daha Fazla</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <img src="{% static 'assets/images/baner-right-image-02.jpg' %}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="right-first-image">
+                                <div class="thumb">
+                                    <div class="inner-content">
+                                        <h4>Çocuk</h4>
+                                        <span>Tarzınızı Yansıtacak En Güzel Ürünler</span>
+                                    </div>
+                                    <div class="hover-content">
+                                        <div class="inner">
+                                            <h4>Çocuk</h4>
+                                            <p>Tarzınızı Yansıtacak En Güzel Ürünler</p>
+                                            <div class="main-border-button">
+                                                <a href="{% url 'category_products' id=14 slug='aksesuar' %}">Daha Fazla</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <img src="{% static 'assets/images/baner-right-image-03.jpg' %}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="right-first-image">
+                                <div class="thumb">
+                                    <div class="inner-content">
+                                        <h4>Aksesuar</h4>
+                                        <span>Tarzınızı Yansıtacak En Güzel Ürünler</span>
+                                    </div>
+                                    <div class="hover-content">
+                                        <div class="inner">
+                                            <h4>Aksesuar</h4>
+                                            <p>Tarzınızı Yansıtacak En Güzel Ürünler</p>
+                                            <div class="main-border-button">
+                                                <a href="{% url 'category_products' id=15 slug='kadin' %}">Daha Fazla</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <img src="{% static 'assets/images/baner-right-image-04.jpg' %}">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Diğer ürün kategorileri için aynı yapıyı tekrarlayın -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ***** Main Banner Area End ***** -->

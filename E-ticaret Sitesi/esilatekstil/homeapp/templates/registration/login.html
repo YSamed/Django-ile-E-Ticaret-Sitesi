@@ -1,0 +1,177 @@
+{% extends "homebase.html" %}
+{%load static%}
+
+{% block title %} {% endblock %}
+{% block keywords %}{% endblock %}
+{% block descriptions %}{% endblock %}
+
+
+{%block footer %} 
+    {% include "footer.html" %}
+{% endblock %}
+
+
+{%block header %} 
+<header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <!-- Logo başlangıcı -->
+                    <a href="{% url 'index' %}" class="logo">
+                        <img src="" alt="Logo">
+                    </a>
+                    <!-- Logo bitişi -->
+
+                    <!-- Menü başlangıcı -->
+                    <ul class="nav">
+                        <!-- Anasayfa -->
+                        <li class="scroll-to-section"><a href="{% url 'index' %}">Anasayfa</a></li>
+                        <!-- Ürünlerimiz -->
+                        <li class="scroll-to-section"><a href="{% url 'products' %}">Ürünlerimiz</a></li>
+                                                
+                        <!-- Daha Fazla Menüsü -->
+                        <li class="submenu">
+                            <a href="javascript:;">Daha Fazla</a>
+                            <ul>
+                                <li><a href="">Üye Ol</a></li>
+                                <li><a href="{% url 'login' %}">Giriş Yap</a></li>
+                                <li><a href="{% url 'logout' %}?next=/">Çıkış</a></li>
+                                <li><a href="">Hakkımızda</a></li>
+                            </ul>
+                        </li>
+                        <!-- Daha Fazla Menüsü Bitişi -->
+                        <li class="scroll-to-section"><a href="{% url 'shopcart' %}">Sepet</a></li>
+                    </ul>
+                    <!-- Menü bitişi -->
+                    <a class='menu-trigger' href="javascript:;">
+                        <span>Menu</span>
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+{% endblock %}
+
+
+
+
+
+{% block content %} 
+ <!-- ***** Preloader Start ***** -->
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>  
+    <!-- ***** Preloader End ***** -->
+    
+    
+
+    <!-- ***** Main Banner Area Start ***** -->
+    <div class="page-heading" id="top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="inner-content">
+                        <h2></h2>
+                        <span></span> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Main Banner Area End ***** -->
+
+
+    <!-- ***** Products Area Starts ***** -->
+    <section class="section" id="products">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-heading">
+                        <h2> </h2>
+                        <span>Kalitenin Adresi</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container" >
+                <div style="background-color: #e7e5e5;">   
+                    <form method="post">
+                        {% csrf_token %}
+                        {% if messages %}
+                            {% for message in messages %}
+                                <p>{{ message }}</p>
+                            {% endfor %}
+                        {% endif %}
+                        <div>
+                            <label for="username">Kullanıcı Adı:</label>
+                            <input type="text" id="username" name="username">
+                        </div>
+                        <div>
+                            <label for="password">Şifre:</label>
+                            <input type="password" id="password" name="password">
+                        </div>
+                        <button type="submit">Giriş Yap</button>
+                    </form>
+                </div>   
+            </div>
+    </section>
+    <!-- ***** Products Area Ends ***** -->
+{% endblock %}
+
+
+
+{% block style %}
+    <style>
+        body {
+          
+            justify-content: center;
+            align-items: center;
+         
+            flex-direction: column;
+        }
+        form {
+            width: 300px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        form div {
+            margin-bottom: 15px; /* Gerekli değil, 150px'yi azaltabilirsiniz */
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        footer {  
+            bottom: 0;
+            width: 100%;
+            padding: 20px;
+            text-align: center;  
+        }
+    </style>
+{% endblock %}
+
+

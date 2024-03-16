@@ -1,0 +1,57 @@
+{% extends "homebase.html" %}
+
+{% block title %} Ürün Arama Sonucu {% endblock %}
+{% block keywords %}{{ categorydata.keywords }}{% endblock %}
+{% block description %}{{ categorydata.description }}{% endblock %}
+
+
+
+{% block content %}
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="order-summary clearfix" style="padding: 100px;">
+                    <div class="section-title" >
+                        <h3>SEPET</h3>
+                    </div>
+                    <table class="fa-shopping-cart-table table">
+                        <thead>
+                            <tr>
+                                <th>Ürün</th>
+                                <th class="text-center">BEDEN</th>
+                                <th class="text-center">FİYAT</th>
+                                <th class="text-center">ADET</th>
+                                <th class="text-right">TOPLAM TUTAR</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for rs in shopcart %}
+                            <tr>
+                                <td class="thumb"><img src="{{rs.product.image.url}}" alt=""></td>
+                                <td class="details">
+                                    <a href="#">{{rs.product.name}}</a> <!-- Ürün adı -->
+                                    <ul>
+                                        <li><span>Size:</span></li>
+                                    
+                                    </ul>
+                                </td>
+                                <td class="price text-center"><strong>₺{{rs.product.price}}</strong><br><del class="font-weak"><small></small></del></td> <!-- Ürün fiyatı -->
+                                <td class="qty text-center"> <strong>{{rs.quantity}}</strong></td> <!-- Ürün miktarı -->
+                                <td class="total text-center"> <strong class="primary-color">{{rs.amount}}</strong></td> <!-- Toplam fiyat -->
+                                <td class="text-right"> <a href="/order/deletefromcart/{{rs.id}}" class="main-btn icon-btn">Sil</a></td> <!-- Sepetten silme bağlantısı -->
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th class="empty"></th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

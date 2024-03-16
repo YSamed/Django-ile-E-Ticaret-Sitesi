@@ -1,0 +1,69 @@
+<!-- Header alanı başlangıcı -->
+<header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <!-- Logo başlangıcı -->
+                    <a href="{% url 'index' %}" class="logo">
+                        <img src="" alt="Logo">
+                    </a>
+                    <!-- Logo bitişi -->
+
+                    <!-- Menü başlangıcı -->
+                    <ul class="nav">
+                        <!-- Anasayfa -->
+                        <li>                        
+                            {% csrf_token %}
+                            {% if messages %}
+                                {% for message in messages %}
+                                    <p>{{ message }}</p>
+                                {% endfor %}
+                            {% endif %}</li>
+                        <li class="scroll-to-section"><a href="{% url 'index' %}">Anasayfa</a></li>
+                        <!-- Ürünlerimiz -->
+                        <li class="scroll-to-section"><a href="{% url 'products' %}">Ürünlerimiz</a></li>
+                        
+                        <!-- Kategori Menüsü -->
+                                {% load mptt_tags %}
+                                <!-- Kategori Listesi -->
+                                {% recursetree category %}
+                            <li class="submenu"><a href="{% url 'category_products' id=node.id slug=node.slug %}">{{ node.title }}</a>
+                                <ul >
+                                    {% if node.get_children %}
+                                        
+                                            {% recursetree node.get_children %}
+                                                <li><a href="{% url 'category_products' id=node.id slug=node.slug %}">{{ node.title }}</a></li>
+                                            {% endrecursetree %}  
+                                    </ul>
+                                </li>
+                                        {% endif %}
+                                {% endrecursetree %}
+                                <!-- Kategori Listesi Bitişi -->
+                                
+                        <!-- Daha Fazla Menüsü -->
+                        <li class="submenu">
+                            <a href="javascript:;">Daha Fazla</a>
+                            <ul>
+                                <li><a href="{% url 'signup' %}">Üye Ol</a></li>
+                                <li><a href="{% url 'login' %}">Giriş Yap</a></li>
+                                <li><a href="{% url 'logout' %}?next=/">Çıkış</a></li>
+                                <li><a href="">Hakkımızda</a></li>
+                            </ul>
+                        </li>
+                        <!-- Daha Fazla Menüsü Bitişi -->
+                        <li class="scroll-to-section"><a href="{% url 'shopcart' %}">Sepet</a></li>
+                    </ul>
+                    <!-- Menü bitişi -->
+                    <a class='menu-trigger' href="javascript:;">
+                        <span>Menu</span>
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Header alanı bitişi -->
+
+
+

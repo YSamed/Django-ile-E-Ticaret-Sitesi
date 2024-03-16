@@ -1,0 +1,42 @@
+{% extends "homebase.html" %}
+{% load static %}
+
+{% block title %}
+    {{ settings.title }}
+{% endblock %}
+
+{% block keywords %}
+    {{ settings.keywords }}
+{% endblock %}
+
+{% block description %}
+    {{ settings.description }}
+{% endblock %}
+
+{% block header %} 
+    {% include "header.html" %}
+{% endblock %}
+
+{% block banner %} 
+    {% include "banner.html" %}
+{% endblock %}
+
+{% block content %} 
+    {% include "content.html" %}
+{% endblock %}
+
+{% block footer %} 
+    {% include "footer.html" %}
+{% endblock %}
+
+{% block body %} 
+    <!-- ***** Preloader Start ***** -->
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>  
+    <!-- ***** Preloader End ***** -->
+{% endblock %}

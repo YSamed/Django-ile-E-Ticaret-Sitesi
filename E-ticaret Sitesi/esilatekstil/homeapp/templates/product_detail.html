@@ -1,0 +1,107 @@
+{% extends "homebase.html" %}
+{% load static %}
+
+{% block title %}{{ product.title }}{% endblock %}
+{% block keywords %}{{ product.keywords }}{% endblock %}
+{% block descriptions %}{{ product.descriptions }}{% endblock %}
+
+{% block footer %}
+    {% include "footer.html" %}
+{% endblock %}
+
+{% block header %}
+   <!-- Header alanı başlangıcı -->
+<header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <!-- Logo başlangıcı -->
+                    <a href="{% url 'index' %}" class="logo">
+                        <img src="" alt="Logo">
+                    </a>
+                    <!-- Logo bitişi -->
+
+                    <!-- Menü başlangıcı -->
+                    <ul class="nav">
+                        <!-- Anasayfa -->
+                        <li class="scroll-to-section"><a href="{% url 'index' %}">Anasayfa</a></li>
+                        <!-- Ürünlerimiz -->
+                        <li class="scroll-to-section"><a href="{% url 'products' %}">Ürünlerimiz</a></li>
+                                                
+                        <!-- Daha Fazla Menüsü -->
+                        <li class="submenu">
+                            <a href="javascript:;">Daha Fazla</a>
+                            <ul>
+                                <li><a href="">Üye Ol</a></li>
+                                <li><a href="{% url 'login' %}">Giriş Yap</a></li>
+                                <li><a href="{% url 'logout' %}?next=/">Çıkış</a></li>
+                                <li><a href="">Hakkımızda</a></li>
+                            </ul>
+                        </li>
+                        <!-- Daha Fazla Menüsü Bitişi -->
+                        <li class="scroll-to-section"><a href="{% url 'shopcart' %}">Sepet</a></li>
+                    </ul>
+                    <!-- Menü bitişi -->
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Header alanı bitişi -->
+{% endblock %}
+{% block content %}
+    <!-- ***** Product Area Starts ***** -->
+    <section class="section" id="product">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="left-images">
+                        <img src="{{ product.image.url }}" alt="{{ product.title }}">
+                        <!-- Burada sadece bir resim gösteriliyor-->
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="right-content">
+                        
+                        <!-- Diğer ürün detayları buraya eklenecek -->
+                        <span>{{ product.detail }}</span>
+                        <!-- Ürün açıklaması ya da diğer bilgiler buraya eklenecek -->
+                        <div class="quantity-content">
+                            <div class="left-content">
+                                <h6></h6>
+                            </div>
+                            <div class="right-content">
+                                <div class="quantity buttons_added">
+                                    <!-- Ürün adedi ile ilgili giriş kutusu ve arttırma/azaltma butonları buraya gelecek -->
+                                    <li>                        
+                                        {% csrf_token %}
+                                        {% if messages %}
+                                            {% for message in messages %}
+                                                <h5 style="color: red;">{{ message }}</h5>
+                                            {% endfor %}
+                                        {% endif %}</li>
+                                </div>
+                            </div>
+                        </div>
+                        <h4>{{ product.title }}</h4>
+                        <h4>{{ product.price }}₺ </h4> 
+                        <div class="total">
+                            <form action="/order/addtocart/{{ product.id }}" method="post">
+                                {% csrf_token %}
+                                <div class="qty-input">
+                                    <span class="text-uppercase">ADET:</span>
+                                    <input name="quantity" class="input" type="number" min="0" max="{{ product.amount }}" value="1">
+                                </div>
+                                <button type="submit" class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Sepete Ekle</button>
+                            </form>
+                            <!-- Toplam fiyat ve sepete ekle butonu buraya gelecek -->
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Product Area Ends ***** -->
+{% endblock %}
